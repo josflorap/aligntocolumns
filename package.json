@@ -1,0 +1,82 @@
+{
+	"name": "robot-beautifier",
+	"displayName": "Robot Beautifier",
+	"description": "robotframework formatter",
+	"version": "0.0.4",
+	"publisher": "duychu",
+	"license": "MIT",
+	"icon": "logo.png",
+	"engines": {
+		"vscode": "^1.55.0"
+	},
+	"categories": [
+		"Formatters",
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"onCommand:robot-beautifier.about",
+		"onLanguage:robot"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "robot-beautifier.about",
+				"title": "Robot Beautifier > About Me"
+			}
+		],
+		"languages": [
+			{
+				"id": "robot",
+				"aliases": [
+					"Robot Framework"
+				],
+				"extensions": [
+					"robot",
+					"resource"
+				],
+				"configuration": "./language-configuration.json",
+				"configurationDefaults": {
+					"robot": {
+						"editor.semanticHighlighting.enabled": true
+					}
+				}
+			}
+		],
+		"grammars": [
+			{
+				"language": "robot",
+				"scopeName": "source.robot",
+				"path": "./syntaxes/robot.tmLanguage.json",
+				"embeddedLanguages": {
+					"meta.table.comments.robot": "markdown"
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/duychu/robot-beautifier.git"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.55.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	}
+}
