@@ -1,0 +1,6 @@
+-   id: aligntoclumns
+    name: aligntocolumns
+    entry: provider/format-provider/RobotFormatProvider
+    files: '.*\.(robot|resource)$'
+    language: node
+    description: "RobotFramework source code formatter"
